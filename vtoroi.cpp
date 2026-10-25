@@ -3,7 +3,7 @@
 //
 #include <iostream>
 #include "vtoroi.h"
-
+#include <vector>
 
 class Shkola {
     std::string name;
@@ -34,8 +34,16 @@ class Spec_shkola: public Shkola {
 
 
 void nomer_2() {
+    //static полиформизм
     Shkola shkola = Shkola("zhizni", 1024);
     shkola.print();
     Spec_shkola spec_shkola = Spec_shkola("os`", "gumannaya", 1024);
     spec_shkola.print();
+
+    //Динамический полиформизм
+    std::vector <Shkola*> a = {&shkola, &spec_shkola};
+    for (Shkola* shkola : a) {
+        shkola->print();
+    }
+
 }
