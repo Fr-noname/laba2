@@ -89,20 +89,53 @@ using namespace std;
 
 
 void odin() {
-    ifstream infile("input.txt");
-    ofstream outfile("output.txt");
-    MyVector v1(3);
-    MyVector v3({1, 2.5, 3}, 3);
-    infile >> v1;
+    // ifstream infile("input.txt");
+    // ofstream outfile("output.txt");
+    // MyVector v1(3);
+    // MyVector v3({1, 2.5, 3}, 3);
+    // infile >> v1;
 
-    outfile << v3 << endl;
+    // outfile << v3 << endl;
     // outfile << v2 << endl;
 
-    infile.close();
-    outfile.close();
+    // infile.close();
+    // outfile.close();
     // vector<double> m1 = {1, 2, 3, 4.5, 7};
     // MyVector V1(m1, 5);
     // MyVector V2(m1, 5);
     // MyVector V3 = V1 + V2;
     // V3.print();
+    MyVector a({1.1, 2.2, 3}, 3); // Создание вектора
+
+    MyVector v;
+    MyVector a1({1.1, 2.2, 3},3); // Копирование
+    a1 = v;
+
+    cout << v << endl;
+
+    cout << a1 << endl;
+
+    MyVector move(std::move(v)); // Move
+
+    cout << move << endl;
+
+    MyVector b(3); // Move
+
+    b = std::move(move);
+
+    cout << "b:" << endl;
+    cout << b << endl;
+
+    // Работа с файлами
+    ifstream file("input.txt");
+    ofstream out("output.txt");
+
+    MyVector fromFile(3);
+
+    file >> fromFile;
+    out << fromFile;
+
+    file.close();
+    out.close();
+
 }
